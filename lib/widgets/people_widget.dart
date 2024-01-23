@@ -1,46 +1,44 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_10/widgets/movie_item.dart';
+import 'package:flutter_application_10/models/people_rated_list_response/people_popular_list_response.dart';
 import 'dart:convert';
+import 'package:flutter_application_10/widgets/people_item.dart';
+import 'package:http/http.dart' as http;
 import 'package:skeletonizer/skeletonizer.dart';
 
-import 'package:flutter_application_10/models/movie_rated_list_response/movie_rated_list_response.dart';
-import 'package:http/http.dart' as http;
-
-Future<MovieListResponse> fetchMovie() async {
+Future<PeoplePopularResponse> fetchPeople() async {
   final response = await http.get(Uri.parse(
-      'https://api.themoviedb.org/3/movie/popular?api_key=cb240d50801976c6f75926069581b0e3'));
+      'https://api.themoviedb.org/3/person/popular?api_key=cb240d50801976c6f75926069581b0e3'));
 
   if (response.statusCode == 200) {
     Map<String, dynamic> decodedJson = json.decode(response.body);
-
-    return MovieListResponse.fromJson(decodedJson);
+    return PeoplePopularResponse.fromJson(decodedJson);
   } else {
     throw Exception('Failed');
   }
 }
 
-class MovieWidget extends StatefulWidget {
-  const MovieWidget({super.key});
+class PeopleWidget extends StatefulWidget {
+  const PeopleWidget({super.key});
 
   @override
-  State<MovieWidget> createState() => _MovieWidgetState();
+  State<PeopleWidget> createState() => _PeopleWidgetStateState();
 }
 
-class _MovieWidgetState extends State<MovieWidget> {
-  late Future<MovieListResponse> movie;
+class _PeopleWidgetStateState extends State<PeopleWidget> {
+  late Future<PeoplePopularResponse> people;
 
   @override
   void initState() {
     super.initState();
-    movie = fetchMovie();
+    people = fetchPeople();
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(15),
-      child: FutureBuilder<MovieListResponse>(
-        future: movie,
+      child: FutureBuilder<PeoplePopularResponse>(
+        future: people,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return Skeletonizer(
@@ -48,8 +46,8 @@ class _MovieWidgetState extends State<MovieWidget> {
               child: ListView.builder(
                 itemCount: snapshot.data!.results!.length,
                 itemBuilder: (context, index) {
-                  return MovieItem(
-                    movie: snapshot.data!.results![index],
+                  return PeopleItem(
+                    people: snapshot.data!.results![index],
                   );
                 },
               ),

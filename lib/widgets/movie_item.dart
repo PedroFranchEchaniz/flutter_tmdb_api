@@ -18,19 +18,19 @@ class MovieItem extends StatelessWidget {
                   debugPrint('Card tapped.');
                 },
                 child: SizedBox(
-                  width: 900,
-                  height: 650,
+                  width: 200,
+                  height: 320,
                   child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
                           Image.network(
                             'https://www.themoviedb.org/t/p/w500${movie.posterPath}',
-                            width: double.infinity,
+                            width: 200,
                           ),
                           Text(
                             movie.title!,
-                            style: TextStyle(height: 2, fontSize: 30),
+                            style: TextStyle(height: 2, fontSize: 10),
                           )
                         ],
                       )),
