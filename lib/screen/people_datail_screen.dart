@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_10/widgets/movie_detail_widget.dart';
+import 'package:flutter_application_10/widgets/people_detail_widget.dart';
 
-class MovieDetail extends StatelessWidget {
-  const MovieDetail({super.key, required this.title, required this.id});
-  final String title;
+class PeopleDetail extends StatelessWidget {
+  const PeopleDetail({super.key, required this.name, required this.id});
+  final String name;
   final int id;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(name),
         centerTitle: true,
         leading: InkWell(
           onTap: () {
@@ -18,7 +19,7 @@ class MovieDetail extends StatelessWidget {
           child: const Icon(Icons.arrow_back),
         ),
       ),
-      body: ModiveDetailWidget(id: id),
+      body: PeopleDetailWidget(id: id),
     );
   }
 }

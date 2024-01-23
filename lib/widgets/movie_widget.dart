@@ -59,16 +59,6 @@ class _MovieWidgetState extends State<MovieWidget> {
           } else {
             return const CircularProgressIndicator();
           }
-          onTap:
-          () {
-            Navigator.push(
-                context,
-                CupertinoPageRoute(
-                    builder: (context) => MovieDetailScreen(
-                          name: movie.title!,
-                          id: movie.id!,
-                        )));
-          };
         },
       ),
     );

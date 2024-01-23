@@ -13,7 +13,7 @@ class MovieItem extends StatelessWidget {
     return Container(
       child: Center(
         child: Card(
-          clipBehavior: Clip.hardEdge,
+          // Se eliminó clipBehavior
           child: InkWell(
             splashColor: Colors.blue.withAlpha(30),
             onTap: () {
@@ -21,31 +21,28 @@ class MovieItem extends StatelessWidget {
                 context,
                 CupertinoPageRoute(
                   builder: (context) => MovieDetail(
-                    name: movie.title!,
+                    title: movie.title!,
                     id: movie.id!,
                   ),
                 ),
               );
             },
-            child: Card(
-              clipBehavior: Clip.hardEdge,
-              child: SizedBox(
-                width: 200,
-                height: 320,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      Image.network(
-                        'https://www.themoviedb.org/t/p/w500${movie.posterPath}',
-                        width: 200,
-                      ),
-                      Text(
-                        movie.title!,
-                        style: TextStyle(height: 2, fontSize: 10),
-                      )
-                    ],
-                  ),
+            child: SizedBox(
+              width: 200,
+              height: 320,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Image.network(
+                      'https://www.themoviedb.org/t/p/w500${movie.posterPath}',
+                      width: 200,
+                    ),
+                    Text(
+                      movie.title!,
+                      style: TextStyle(height: 2, fontSize: 10),
+                    )
+                  ],
                 ),
               ),
             ),
