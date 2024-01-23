@@ -57,8 +57,18 @@ class _MovieWidgetState extends State<MovieWidget> {
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else {
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           }
+          onTap:
+          () {
+            Navigator.push(
+                context,
+                CupertinoPageRoute(
+                    builder: (context) => MovieDetailScreen(
+                          name: movie.title!,
+                          id: movie.id!,
+                        )));
+          };
         },
       ),
     );

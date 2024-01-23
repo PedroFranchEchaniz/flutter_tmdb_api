@@ -139,12 +139,12 @@ class KnownFor {
     overview = json['overview'];
     posterPath = json['poster_path'];
     mediaType = json['media_type'];
-    genreIds = json['genre_ids'].cast<int>();
+    genreIds = json['genre_ids']?.cast<int>();
     popularity = json['popularity'];
     firstAirDate = json['first_air_date'];
     voteAverage = json['vote_average'];
     voteCount = json['vote_count'];
-    originCountry = json['origin_country'].cast<String>();
+    originCountry = json['origin_country']?.cast<String>();
     title = json['title'];
     originalTitle = json['original_title'];
     releaseDate = json['release_date'];

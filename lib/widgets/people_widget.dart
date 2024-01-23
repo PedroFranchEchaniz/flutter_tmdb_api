@@ -55,7 +55,7 @@ class _PeopleWidgetStateState extends State<PeopleWidget> {
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else {
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           }
         },
       ),
