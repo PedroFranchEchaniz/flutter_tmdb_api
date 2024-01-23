@@ -9,8 +9,33 @@ class MovieItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Image.network(
-          'https://www.themoviedb.org/t/p/w220_and_h330_face${movie.posterPath}'),
+      child: Center(
+        child: Card(
+            clipBehavior: Clip.hardEdge,
+            child: InkWell(
+                splashColor: Colors.blue.withAlpha(30),
+                onTap: () {
+                  debugPrint('Card tapped.');
+                },
+                child: SizedBox(
+                  width: 900,
+                  height: 650,
+                  child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Image.network(
+                            'https://www.themoviedb.org/t/p/w500${movie.posterPath}',
+                            width: double.infinity,
+                          ),
+                          Text(
+                            movie.title!,
+                            style: TextStyle(height: 2, fontSize: 30),
+                          )
+                        ],
+                      )),
+                ))),
+      ),
     );
   }
 }
