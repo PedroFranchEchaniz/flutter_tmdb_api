@@ -13,36 +13,38 @@ class MovieItem extends StatelessWidget {
     return Container(
       child: Center(
         child: Card(
-          // Se eliminó clipBehavior
-          child: InkWell(
-            splashColor: Colors.blue.withAlpha(30),
-            onTap: () {
-              Navigator.push(
-                context,
-                CupertinoPageRoute(
-                  builder: (context) => MovieDetail(
-                    title: movie.title!,
-                    id: movie.id!,
-                  ),
-                ),
-              );
-            },
-            child: SizedBox(
-              width: 200,
-              height: 320,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Image.network(
-                      'https://www.themoviedb.org/t/p/w500${movie.posterPath}',
-                      width: 200,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: InkWell(
+              splashColor: Colors.blue.withAlpha(30),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  CupertinoPageRoute(
+                    builder: (context) => MovieDetail(
+                      title: movie.title!,
+                      id: movie.id!,
                     ),
-                    Text(
-                      movie.title!,
-                      style: TextStyle(height: 2, fontSize: 10),
-                    )
-                  ],
+                  ),
+                );
+              },
+              child: SizedBox(
+                width: 200,
+                height: 320,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Image.network(
+                        'https://www.themoviedb.org/t/p/w500${movie.posterPath}',
+                        width: 200,
+                      ),
+                      Text(
+                        movie.title!,
+                        style: TextStyle(height: 2, fontSize: 10),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),

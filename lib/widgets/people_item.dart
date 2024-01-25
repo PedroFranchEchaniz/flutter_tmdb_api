@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_10/models/people_rated_list_response/people_popular_list_response.dart';
 import 'package:flutter_application_10/screen/people_datail_screen.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class PeopleItem extends StatelessWidget {
   const PeopleItem({super.key, required this.people});
@@ -28,21 +29,37 @@ class PeopleItem extends StatelessWidget {
           },
           child: SizedBox(
             width: 200,
-            height: 320,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  Image.network(
-                    'https://www.themoviedb.org/t/p/w500${people.profilePath}',
-                    width: 200,
-                  ),
-                  Text(
-                    people.name!,
-                    style: const TextStyle(height: 2, fontSize: 10),
-                  )
-                ],
-              ),
+            height: 350,
+            child: Stack(
+              children: [
+                const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                Column(
+                  children: [
+                    ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          topRight: Radius.circular(10)),
+                      child: FadeInImage.memoryNetwork(
+                        placeholder: kTransparentImage,
+                        image:
+                            'https://www.themoviedb.org/t/p/w500${people.profilePath}',
+                        width: double.infinity,
+                        height: 300,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30,
+                      child: Text(
+                        people.name!,
+                        style: const TextStyle(height: 2, fontSize: 20),
+                      ),
+                    )
+                  ],
+                )
+              ],
             ),
           ),
         ),
