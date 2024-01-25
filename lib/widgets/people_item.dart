@@ -51,10 +51,10 @@ class PeopleItem extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 30,
+                      height: 20,
                       child: Text(
                         people.name!,
-                        style: const TextStyle(height: 2, fontSize: 20),
+                        style: const TextStyle(height: 2, fontSize: 10),
                       ),
                     )
                   ],
