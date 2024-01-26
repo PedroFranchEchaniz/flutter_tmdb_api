@@ -33,6 +33,7 @@ dependencies:
   http: ^1.2.0
   skeletonizer: ^1.0.1
   transparent_image: ^2.0.1
+  youtube_player_flutter: ^8.1.2
 
 
   # The following adds the Cupertino Icons font to your application.
